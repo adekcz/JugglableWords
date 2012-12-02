@@ -13,20 +13,24 @@ public class Engine {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		System.out.println(isValidSS("db97531"));
-		System.out.println(isValidSS("534"));
-		System.out.println(isValidSS("543"));
+		System.out.println(new SiteSwap("db97531"));
+		System.out.println(new SiteSwap("534"));
+		//System.out.println(new SiteSwap("543"));
 		//load file
 		
 		//get lines
+		List<String> list = FileUtils.getLines("C:\\Users\\anuvin\\Documents\\GitHub\\JugglableWords\\SiteSwapsWords\\src\\resources\\wlist_match10\\wlist_match10.txt");
+		System.out.println("FROM MAIN");
+		for (String str : list){
+			System.out.println(str);
+		}
 		
+		FileUtils.writeLines(list, "C:\\Users\\anuvin\\Documents\\GitHub\\JugglableWords\\SiteSwapsWords\\src\\resources\\result.txt");
 		//if line is valid
 		String line = "";
 		if(siteswaps.get(line.length()) == null) {
 			siteswaps.put(line.length(), new ArrayList<String>());
-			
 		}
-		
 	}
 	
 	
