@@ -111,7 +111,7 @@ public class AppWindow {
 				JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
 				JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		pane.setLocation(22, 93);
-		pane.setSize(138, 220);
+		pane.setSize(95, 220);
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
 		// frame.add(panel);
