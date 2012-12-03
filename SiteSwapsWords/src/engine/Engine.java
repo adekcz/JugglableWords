@@ -1,5 +1,6 @@
 package engine;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -24,8 +25,11 @@ public class Engine {
 		for (String str : list){
 			System.out.println(str);
 		}
-		
+		try {
 		FileUtils.writeLines(list, "C:\\Users\\anuvin\\Documents\\GitHub\\JugglableWords\\SiteSwapsWords\\src\\resources\\result.txt");
+		} catch (IOException e){
+			System.err.println(e);
+		}
 		//if line is valid
 		String line = "";
 		if(siteswaps.get(line.length()) == null) {

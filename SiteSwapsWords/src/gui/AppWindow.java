@@ -19,10 +19,13 @@ import java.util.Arrays;
 import java.util.List;
 import javax.swing.JTable;
 import java.awt.Color;
+import java.io.IOException;
+
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JTextPane;
+import javax.swing.SwingConstants;
 
 public class AppWindow {
 
@@ -69,6 +72,11 @@ public class AppWindow {
 		JLabel inputLabel = new JLabel("Input data file");
 		inputLabel.setBounds(49, 9, 68, 14);
 		panel.add(inputLabel);
+		
+		final JLabel jLabel_Status = new JLabel("");
+		jLabel_Status.setHorizontalAlignment(SwingConstants.CENTER);
+		jLabel_Status.setBounds(0, 312, 472, 14);
+		panel.add(jLabel_Status);
 		
 		inputFile = new JTextField();
 		inputFile.setBounds(189, 6, 86, 20);
@@ -123,6 +131,13 @@ public class AppWindow {
 		panel.add(table);
 		
 		JButton outputButton = new JButton("Select File");
+		outputButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				JFileChooser chooser = new JFileChooser("C:\\Users\\anuvin\\Documents\\GitHub\\JugglableWords\\SiteSwapsWords\\src");
+				chooser.showSaveDialog(panel);
+				outputFile.setText(chooser.getSelectedFile().getPath());
+			}
+		});
 		outputButton.setBounds(280, 36, 75, 23);
 		panel.add(outputButton);
 		
@@ -154,10 +169,18 @@ public class AppWindow {
 					builder.append(str+System.getProperty("line.separator"));
 				}
 				textPane.setText(builder.toString());
+				try {
+				FileUtils.writeLines(siteswaps, outputFile.getText());
+				jLabel_Status.setText("Soubor ulozen");
+				} catch (IOException e){
+					jLabel_Status.setText("Soubor se nepovedlo ulozit" );
+				}
 			}
 		});
 		btnExecute.setBounds(46, 59, 89, 23);
 		panel.add(btnExecute);
+		
+
 		
 
 

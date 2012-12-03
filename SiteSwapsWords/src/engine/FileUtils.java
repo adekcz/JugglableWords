@@ -5,6 +5,7 @@ import java.io.BufferedWriter;
 import java.io.DataInputStream;
 import java.io.FileInputStream;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +16,6 @@ public class FileUtils {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-
 	}
 
 	public static List<String> getLines(String path) {
@@ -45,8 +45,8 @@ public class FileUtils {
 		return result;
 	}
 
-	public static void writeLines(List<String> data, String path) {
-		try {
+	public static void writeLines(List<String> data, String path) throws IOException {
+		
 			// Create file
 			FileWriter fstream = new FileWriter(path);
 			BufferedWriter out = new BufferedWriter(fstream);
@@ -55,8 +55,6 @@ public class FileUtils {
 			}
 			// Close the output stream
 			out.close();
-		} catch (Exception e) {// Catch exception if any
-			System.err.println("Error: " + e.getMessage());
-		}
+		
 	}
 }
